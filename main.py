@@ -1,10 +1,11 @@
 import json
 import uvicorn
 from fastapi import FastAPI
+import urllib.request
 
-
-with open("./2022.json") as f:
-    data = json.load(f)
+url = "https://raw.githubusercontent.com/oit-tools/syllabus-scraping/master/2022.json"
+session = urllib.request.urlopen(url)
+data = json.loads(session.read())
 
 app = FastAPI()
 
