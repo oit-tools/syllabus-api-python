@@ -3,7 +3,7 @@ import uvicorn
 from fastapi import FastAPI
 import urllib.request
 
-url = "https://raw.githubusercontent.com/oit-tools/syllabus-scraping/master/2022.json"
+url = "https://raw.githubusercontent.com/oit-tools/syllabus-scraping/master/data/2022.json"
 session = urllib.request.urlopen(url)
 data = json.loads(session.read())
 
