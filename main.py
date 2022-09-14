@@ -13,6 +13,26 @@ app = FastAPI()
 async def get_syllabus(numbering: str):
     return data[numbering]
 
+@app.get("/table/all")
+async def get_table():
+    result = list()
+
+    for key in data.keys():
+        result.append({
+            "lecture_title": data[key]["lecture_title"],
+            "year": data[key]["year"],
+            "credit": data[key]["credit"],
+            "term": data[key]["term"],
+            "person": data[key]["person"],
+            "numbering": data[key]["numbering"],
+            "department": data[key]["department"],
+            "dow": data[key]["dow"],
+            "period": data[key]["period"],
+            "url": data[key]["url"]
+        })
+
+    return result
+
 def main():
     uvicorn.run(app, host="localhost", port=8000, reload=True)
 
